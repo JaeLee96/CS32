@@ -1,0 +1,55 @@
+- Notable Obstacles 
+
+One of the major obstacles I faced was using soley recursions, without any use of STL, for-loops, and while loops,
+to implement the function that would acquire every combination of a given word. 
+
+This was especially challenging because I had to rely on helper function and also use recursion simultaneously.
+
+In addition, managing stack overflow was a daunting task. Initially, my program did not run even with increasing
+reserve stack size to 8 MB. However, after eliminating unnecessary codes, I was able to successfully build and run
+my program.
+
+- Test Caases
+
+For first test case, I created the following:
+
+	string exampleDict[] = { "hello", "helol", "heoll", "hlelo", "hleol", "hlleo", "hlloe", "hloel", "hlole",
+		"hoell", "holel", "holle", "ehllo", "ehlol", "eholl", "elhlo", "elhol", "ellho", "elloh", "elohl", "elolh",
+		"eohll", "eolhl", "eollh" };
+		
+	int numResults = recurCombos("hello", exampleDict, 24, results);
+	
+	for (int i = 0; i < 20; i++)
+		cerr << results[i] << endl;
+
+The reason for this test case was that, since the dictionary contained more than 20 (which is the maximum number of
+results that result array could hold) cases of matched combination, I wanted to see if only 20 results are copied
+into results array.
+
+For second test case, I created the following:
+
+	string results2[MAXRESULTS];
+
+	string exampleDict2[] = { "loop", "pool", "opol", "elephant" };
+
+	int numResults2 = recurCombos("loop", exampleDict2, 4, results2);
+
+	for (int i = 0; i < 20; i++)
+		cerr << results2[i] << endl;
+
+This time, I wanted to check for the word that contains same letter more than once, result array will only contain
+unique combination and not a duplicate.
+ 
+For third test case, I created the following:
+
+	string exampleDict3[] = { "" };
+
+	string results3[MAXRESULTS];
+
+	int numResults3 = recurCombos("", exampleDict3, 1, results3);
+
+	for (int i = 0; i < 20; i++)
+		cerr << results3[i] << endl;
+
+Lastly, I wanted to check that all the functions work properly for even an empty dictionary.
+
